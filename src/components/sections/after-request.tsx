@@ -29,7 +29,7 @@ export function AfterRequest({ dict }: { dict: Dictionary['afterRequest'] }) {
               <StaggerItem key={step.num}>
                 <div className="rounded-2xl bg-white px-4 pt-4 pb-4 flex flex-col gap-2 shadow-[0_2px_16px_rgba(26,59,93,0.07)]">
                   <div className="flex items-center justify-between">
-                    <span className="text-[12px] font-semibold text-[#c0c8d0] tabular-nums">{step.num}</span>
+                    <span className="text-[12px] font-semibold text-[#c0c8d0] ">{step.num}</span>
                     <div className="flex items-center gap-1.5 bg-[#eff1f4] rounded-lg px-2.5 py-1.5">
                       <Icon size={13} className="text-[#3d6d9d] shrink-0" />
                       <span className="text-[12px] font-medium text-[#3d6d9d] whitespace-nowrap">{step.badge}</span>
@@ -56,7 +56,7 @@ export function AfterRequest({ dict }: { dict: Dictionary['afterRequest'] }) {
               <StaggerItem key={step.num}>
                 <div className={`flex items-center gap-10 py-8 ${i > 0 ? "border-t border-[#e4e8ec]" : ""}`}>
                   {/* Номер */}
-                  <span className="text-[52px] font-black leading-none tabular-nums text-[#dde0e4] w-20 shrink-0 select-none">
+                  <span className="text-[52px] font-black leading-none  text-[#dde0e4] w-20 shrink-0 select-none">
                     {step.num}
                   </span>
 
