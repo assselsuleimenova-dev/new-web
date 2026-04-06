@@ -17,7 +17,7 @@ export function AfterRequest({ dict }: { dict: Dictionary['afterRequest'] }) {
             <br />
             {dict.title2}
           </h2>
-          <p className="text-[15px] text-[#5d87a8] mb-10 md:mb-14 text-center md:text-center">{dict.subtitle}</p>
+          <p className="text-[18px] text-[#5d87a8] mb-10 md:mb-14 text-center md:text-center">{dict.subtitle}</p>
         </FadeUp>
 
         {/* Мобилка */}
