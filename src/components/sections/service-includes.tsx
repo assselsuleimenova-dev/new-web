@@ -22,7 +22,7 @@ function MultilineText({ text, className }: { text: string; className?: string }
 
 export function ServiceIncludes({ dict }: { dict: Dictionary['serviceIncludes'] }) {
   return (
-    <section className="bg-white py-16 md:py-24 overflow-x-hidden">
+    <section className="bg-[#f7fbff] py-16 md:py-24 overflow-x-hidden">
       <div className="mx-auto max-w-6xl px-6">
         <FadeUp>
           <h2 className="text-[34px] leading-[31px] md:text-[44px] md:leading-[1.1] font-semibold tracking-[-1px] text-[#1a3b5d] mb-3 text-center md:text-center">
@@ -32,10 +32,10 @@ export function ServiceIncludes({ dict }: { dict: Dictionary['serviceIncludes'] 
           <p className="text-[16px] text-[#5d87a8] mb-10 md:mb-14 text-center md:text-center">{dict.subtitle}</p>
         </FadeUp>
 
-        <StaggerGrid className="grid grid-cols-2 gap-3 md:gap-4 relative">
+        <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 relative">
           {/* Карточка: Любой врач */}
-          <StaggerItem className="bg-[#edf4fb] rounded-2xl p-5 md:p-6 flex flex-col gap-4 shadow-[0_2px_16px_rgba(26,59,93,0.07)]">
-            <MultilineText text={dict.doctorsTitle} className="text-lg font-medium text-[#1a3b5d] leading-snug" />
+          <StaggerItem className="bg-white rounded-2xl p-5 md:p-6 flex flex-col gap-4 shadow-[0_2px_16px_rgba(26,59,93,0.07)]">
+            <MultilineText text={dict.doctorsTitle} className="text-lg font-medium text-[#1a3b5d] leading-tight" />
             <div className="flex gap-6 mt-auto">
               <div className="flex flex-col gap-1">
                 {dict.specialties1.map((s) => (
@@ -55,9 +55,9 @@ export function ServiceIncludes({ dict }: { dict: Dictionary['serviceIncludes'] 
           </StaggerItem>
 
           {/* Карточка: Что в сумке — row-span-2 */}
-          <StaggerItem className="relative row-span-2">
-            <div className="bg-[#edf4fb] rounded-2xl p-5 md:p-6 flex flex-col min-h-[260px] md:min-h-[320px] h-full shadow-[0_2px_16px_rgba(26,59,93,0.07)]">
-              <MultilineText text={dict.bagTitle} className="text-lg font-medium text-[#1a3b5d] leading-snug" />
+          <StaggerItem className="relative md:row-span-2">
+            <div className="bg-white rounded-2xl p-5 md:p-6 flex flex-col min-h-[260px] md:min-h-[320px] h-full shadow-[0_2px_16px_rgba(26,59,93,0.07)]">
+              <MultilineText text={dict.bagTitle} className="text-lg font-medium text-[#1a3b5d] leading-tight" />
               <div className="flex flex-col gap-1.5 mt-4">
                 {dict.bagItems.map((item) => (
                   <span key={item} className="text-sm leading-5 text-[#5384c4]">
@@ -79,12 +79,12 @@ export function ServiceIncludes({ dict }: { dict: Dictionary['serviceIncludes'] 
           </StaggerItem>
 
           {/* Карточка: Приедем в любое время */}
-          <StaggerItem className="bg-[#edf4fb] rounded-2xl p-5 md:p-6 flex items-start shadow-[0_2px_16px_rgba(26,59,93,0.07)]">
-            <MultilineText text={dict.timeTitle} className="text-lg font-medium text-[#1a3b5d] leading-snug" />
+          <StaggerItem className="bg-white rounded-2xl p-5 md:p-6 flex items-start shadow-[0_2px_16px_rgba(26,59,93,0.07)]">
+            <MultilineText text={dict.timeTitle} className="text-lg font-medium text-[#1a3b5d] leading-tight" />
           </StaggerItem>
 
           {/* Баннер с ценой — col-span-2 */}
-          <StaggerItem className="col-span-2 relative z-0">
+          <StaggerItem className="md:col-span-2 relative z-0">
             <div
               className="rounded-2xl px-6 py-5 md:px-10 md:py-7 flex flex-col"
               style={{
