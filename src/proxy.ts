@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 
 const locales = ['ru', 'kk'];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const hasLocale = locales.some(l => pathname.startsWith(`/${l}/`) || pathname === `/${l}`);
   if (!hasLocale) {
