@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +9,25 @@ import type { Dictionary, Lang } from "@/dictionaries";
 
 const logoSrc =
   "https://www.figma.com/api/mcp/asset/bd97dc54-5b41-45f7-bcb6-8cd4ec1d0689";
+
+function MenuIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="4" x2="20" y1="6" y2="6" />
+      <line x1="4" x2="20" y1="12" y2="12" />
+      <line x1="4" x2="20" y1="18" y2="18" />
+    </svg>
+  );
+}
+
+function XIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  );
+}
 
 export function Header({ dict, lang }: { dict: Dictionary['header']; lang: Lang }) {
   const [open, setOpen] = useState(false);
@@ -63,7 +81,7 @@ export function Header({ dict, lang }: { dict: Dictionary['header']; lang: Lang 
             onClick={() => setOpen(!open)}
             aria-label="Меню"
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            {open ? <XIcon /> : <MenuIcon />}
           </button>
         </div>
 

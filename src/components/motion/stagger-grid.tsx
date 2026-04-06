@@ -1,64 +1,64 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.07,
-      delayChildren: 0.05,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 18, scale: 0.97 },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: "spring" as const,
-      stiffness: 260,
-      damping: 26,
-    },
-  },
-};
-
-interface StaggerGridProps {
+interface StaggerItemProps {
   children: React.ReactNode;
   className?: string;
+  _index?: number;
+  _visible?: boolean;
 }
 
-export function StaggerGrid({ children, className }: StaggerGridProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
-
+export function StaggerItem({ children, className, _index = 0, _visible = false }: StaggerItemProps) {
   return (
-    <motion.div
-      ref={ref}
-      variants={containerVariants}
-      initial="hidden"
-      animate={isInView ? "show" : "hidden"}
-      className={className}
+    <div
+      className={cn(
+        "transition-all duration-500 ease-out",
+        _visible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-[0.97]",
+        className
+      )}
+      style={{ transitionDelay: `${_index * 70 + 50}ms` }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
-export function StaggerItem({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
+export function StaggerGrid({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-60px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  let index = 0;
+  const cloned = React.Children.map(children, (child) => {
+    if (React.isValidElement(child) && child.type === StaggerItem) {
+      return React.cloneElement(child as React.ReactElement<StaggerItemProps>, {
+        _index: index++,
+        _visible: visible,
+      });
+    }
+    return child;
+  });
+
   return (
-    <motion.div variants={itemVariants} className={className}>
-      {children}
-    </motion.div>
+    <div ref={ref} className={className}>
+      {cloned}
+    </div>
   );
 }
