@@ -126,6 +126,7 @@
   --sidebar-ring: #3d6d9d;
 }
 
+
 @utility scrollbar-hide {
   scrollbar-width: none;
   &::-webkit-scrollbar {

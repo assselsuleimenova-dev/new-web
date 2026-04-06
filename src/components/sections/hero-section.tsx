@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ParallaxHeroImage } from "@/components/motion/parallax-image";
+import type { Dictionary } from "@/dictionaries";
 
-export function HeroSection() {
+export function HeroSection({ dict }: { dict: Dictionary['hero'] }) {
   return (
     <section className="relative w-full overflow-hidden">
       {/* Мобильный градиент */}
@@ -39,58 +40,63 @@ export function HeroSection() {
         <div className="flex flex-col items-center pt-16 pb-0">
           <div className="flex flex-col items-center gap-2 pt-12 text-center">
             <h1 className="text-[40px] font-medium leading-[38px] tracking-[-1.5px] text-[#1a3b5d] max-w-[345px]">
-              Вызовите
+              {dict.title1}
               <br />
-              врача на&nbsp;дом
+              {dict.title2}
             </h1>
-            <p className="mt-1 text-lg leading-6 text-[#768183] max-w-[320px]">
-              Приедет фельдшер для&nbsp;осмотра, пока выбранный врач
-              консультирует вас онлайн
+            <p className="mt-1 text-lg leading-6 text-[#5d87a8] max-w-[320px]">
+              {dict.subtitle} {dict.subtitle2}
             </p>
-            <Button className="mt-3 h-[65px] w-[201px] rounded-xl bg-[#3d6d9d] text-[17px] font-medium text-white hover:bg-[#345e87]">
-              Вызвать врача
-            </Button>
-            <p className="text-lg font-medium text-[#3d6d9d]">за 15 000 тг</p>
+            <a href="#cta">
+              <Button className="mt-3 h-[65px] w-[201px] rounded-xl bg-[#3d6d9d] text-[17px] font-medium text-white hover:bg-[#345e87]">
+                {dict.cta}
+              </Button>
+            </a>
+            <p className="text-lg font-medium text-[#3d6d9d]">{dict.price}</p>
           </div>
 
           <div className="relative mt-6 h-[270px] w-full overflow-hidden">
             <ParallaxHeroImage
-              src="https://www.figma.com/api/mcp/asset/0ec181e1-3bb4-4e18-86dd-ef6dbe661ed2"
+              src="https://www.figma.com/api/mcp/asset/4a7e672a-ebf1-4926-8eed-0139c89aef39"
               alt="Врач на выезде"
+              priority
             />
           </div>
         </div>
       </div>
 
       {/* Десктопный лейаут */}
-      <div className="hidden md:block relative h-[589px]">
+      <div className="hidden md:block relative h-[620px]">
         {/* Фото — правый край секции */}
-        <div className="absolute bottom-0 right-0 h-[494px] w-[50%] overflow-hidden">
+        <div className="absolute bottom-0 right-0 h-[520px] w-[50%] overflow-hidden">
           <ParallaxHeroImage
-            src="https://www.figma.com/api/mcp/asset/e4292f17-5ecf-4ae2-8dcd-85ba3086899c"
+            src="https://www.figma.com/api/mcp/asset/4a7e672a-ebf1-4926-8eed-0139c89aef39"
             alt="Врач на выезде"
+            priority
           />
         </div>
 
         {/* Текст — левая половина */}
-        <div className="relative mx-auto max-w-6xl px-4 h-full">
-          <div className="absolute top-1/2 -translate-y-1/2 left-4 flex flex-col gap-3 max-w-[496px] pt-16">
-            <h1 className="text-[55px] font-medium leading-[52px] tracking-[-2px] text-[#1a3b5d]">
-              Вызовите
+        <div className="relative mx-auto max-w-6xl px-6 h-full">
+          <div className="absolute top-1/2 -translate-y-1/2 left-6 flex flex-col gap-4 max-w-[520px] pt-16">
+            <h1 className="text-[60px] font-medium leading-[56px] tracking-[-2px] text-[#1a3b5d]">
+              {dict.title1}
               <br />
-              врача на&nbsp;дом
+              {dict.title2}
             </h1>
-            <p className="text-[25px] leading-[33px] text-[#768183] max-w-[485px]">
-              Приедет фельдшер для&nbsp;осмотра,
+            <p className="text-[22px] leading-[32px] text-[#5d87a8] max-w-[460px]">
+              {dict.subtitle}
               <br />
-              пока выбранный врач консультирует вас онлайн
+              {dict.subtitle2}
             </p>
-            <div className="flex items-center gap-6 mt-1">
-              <Button className="h-[90px] w-[277px] rounded-[16px] bg-[#3d6d9d] text-[23px] font-medium text-white hover:bg-[#345e87] shrink-0">
-                Вызвать врача
-              </Button>
-              <p className="text-[25px] text-[#3d6d9d] whitespace-nowrap">
-                за 15 000 тг
+            <div className="flex items-center gap-6 mt-2">
+              <a href="#cta">
+                <Button className="h-[80px] w-[260px] rounded-[16px] bg-[#3d6d9d] text-[20px] font-medium text-white hover:bg-[#345e87] shrink-0">
+                  {dict.cta}
+                </Button>
+              </a>
+              <p className="text-[22px] text-[#3d6d9d] whitespace-nowrap">
+                {dict.price}
               </p>
             </div>
           </div>

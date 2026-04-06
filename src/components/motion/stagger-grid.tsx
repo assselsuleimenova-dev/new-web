@@ -3,23 +3,27 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const ease = [0.21, 0.47, 0.32, 0.98] as const;
-
 const containerVariants = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.09,
+      staggerChildren: 0.07,
+      delayChildren: 0.05,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 18, scale: 0.97 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease },
+    scale: 1,
+    transition: {
+      type: "spring" as const,
+      stiffness: 260,
+      damping: 26,
+    },
   },
 };
 

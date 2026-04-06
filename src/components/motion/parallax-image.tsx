@@ -8,7 +8,7 @@ interface ParallaxHeroImageProps {
   src: string;
   alt: string;
   className?: string;
-  /** How many px the image shifts as the hero scrolls out (default 80) */
+  priority?: boolean;
   distance?: number;
 }
 
@@ -16,6 +16,7 @@ export function ParallaxHeroImage({
   src,
   alt,
   className,
+  priority = false,
   distance = 80,
 }: ParallaxHeroImageProps) {
   const ref = useRef(null);
@@ -33,6 +34,7 @@ export function ParallaxHeroImage({
           src={src}
           alt={alt}
           fill
+          priority={priority}
           className={className ?? "object-cover object-top"}
           unoptimized
         />
