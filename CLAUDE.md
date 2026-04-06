@@ -7,7 +7,7 @@
 - **Framework:** Next.js 16 (App Router), React 19, TypeScript
 - **Styling:** Tailwind CSS v4 — utility classes only, no CSS Modules or styled-components
 - **UI primitives:** `@base-ui/react` + shadcn (for Button, Accordion, Card, etc.)
-- **Animation:** Framer Motion — use existing motion wrappers, do not add raw `motion.*` elements to section components
+- **Animation:** Framer Motion — use existing motion wrappers for scroll sections; hero uses `motion.*` directly (load animation, not scroll-triggered)
 - **Icons:** `lucide-react` — use only icons already imported; do not install new icon libraries
 - **Font:** ALS Sirius (Light 300, Regular 400, Medium 500, Bold 700, Black 900) — loaded via `@font-face` in `globals.css`
 
@@ -23,7 +23,7 @@ All tokens live in `src/app/globals.css` as CSS custom properties under `:root`:
 | `#5384c4` | Light blue | Specialty tags, list items |
 | `#dce8f5` | Pale blue | Borders, dividers |
 | `#f7fbff` | Off-white | Section backgrounds (alternating) |
-| `#edf4fb` | Card blue | Card backgrounds |
+| `bg-white` | White | Card backgrounds (service-includes, reviews) |
 | `#3eb87d` | Green | WhatsApp / CTA button |
 | `#1a3b5d` | Dark navy | Dark section backgrounds |
 
@@ -67,7 +67,7 @@ src/
 
 ## Animation Primitives
 
-Use **only** the existing wrappers — do not use `motion.*` directly in section components:
+For scroll sections use wrappers:
 
 ```tsx
 // Fade-in on scroll — wrap headings + subtitle
@@ -77,9 +77,19 @@ Use **only** the existing wrappers — do not use `motion.*` directly in section
 <StaggerGrid className="grid grid-cols-3 gap-4">
   <StaggerItem>...</StaggerItem>
 </StaggerGrid>
+```
 
-// Parallax hero image
-<ParallaxHeroImage src="..." alt="..." priority />
+Hero uses `motion.*` directly (page load animation, not scroll):
+```tsx
+// fadeUp helper: { initial: { opacity:0, y:16 }, animate: { opacity:1, y:0 }, transition: spring }
+// fadeIn helper: { initial: { opacity:0 }, animate: { opacity:1 }, transition: { ease: [0.4,0,0.2,1] } }
+// IMPORTANT: ease must be a bezier array, not a string — framer-motion TypeScript will error on "easeOut"
+```
+
+Ticker — seamless marquee: render items twice, animate `translateX(0 → -50%)`:
+```tsx
+{row}{row} // duplicate for seamless loop
+animation: "marquee 8s linear infinite"
 ```
 
 ## Typography Scale
@@ -106,6 +116,9 @@ Use **only** the existing wrappers — do not use `motion.*` directly in section
 - Headings: `text-[34px] leading-[31px] md:text-[44px] md:leading-[1.1] font-semibold tracking-[-1px] text-[#1a3b5d]`
 - Subtitles: `text-[15px] text-[#5d87a8]`
 - Mobile: centered text; Desktop: varies per section (center or left)
+- Hero mobile image: `w-screen -mx-4` to break out of container padding (full bleed)
+- All CTA buttons (`href="#cta"`) scroll to `<section id="cta">` in cta-banner.tsx
+- service-includes: `grid-cols-1 md:grid-cols-2`, bag card `md:row-span-2`, price banner `md:col-span-2`
 
 ## Asset Handling
 
