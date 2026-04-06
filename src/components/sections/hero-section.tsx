@@ -14,7 +14,7 @@ const fadeUp = (delay: number) => ({
 const fadeIn = (delay: number) => ({
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  transition: { duration: 0.6, ease: "easeOut", delay },
+  transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] as const, delay },
 });
 
 export function HeroSection({ dict }: { dict: Dictionary['hero'] }) {
