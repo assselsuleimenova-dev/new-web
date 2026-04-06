@@ -81,8 +81,7 @@ export function AfterRequest({ dict }: { dict: Dictionary['afterRequest'] }) {
                       />
                     </div>
                   ) : (
-                    <div className="flex items-center gap-2 rounded-xl bg-white border border-[#e4e8ec] px-4 py-3 shrink-0">
-                      <Icon size={15} className="text-[#3d6d9d] shrink-0" />
+                    <div className="rounded-xl bg-white border border-[#e4e8ec] px-4 py-3 shrink-0">
                       <span className="text-[13px] font-medium text-[#3d6d9d] whitespace-nowrap">{step.badge}</span>
                     </div>
                   )}
