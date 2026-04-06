@@ -9,7 +9,7 @@ const stepIcons: LucideIcon[] = [Clock, Car, Video, FileText];
 
 export function AfterRequest({ dict }: { dict: Dictionary['afterRequest'] }) {
   return (
-    <section className="bg-[#f8f9fb] py-16 md:py-24">
+    <section className="bg-[#f7fbff] py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-6">
         <FadeUp>
           <h2 className="text-[34px] leading-[31px] md:text-[44px] md:leading-[1.1] font-semibold tracking-[-1px] text-[#1a3b5d] mb-3 text-center md:text-center">
@@ -17,7 +17,7 @@ export function AfterRequest({ dict }: { dict: Dictionary['afterRequest'] }) {
             <br />
             {dict.title2}
           </h2>
-          <p className="text-[16px] text-[#5d87a8] mb-10 md:mb-14 text-center md:text-center">{dict.subtitle}</p>
+          <p className="text-[15px] text-[#5d87a8] mb-10 md:mb-14 text-center md:text-center">{dict.subtitle}</p>
         </FadeUp>
 
         {/* Мобилка */}
@@ -35,7 +35,7 @@ export function AfterRequest({ dict }: { dict: Dictionary['afterRequest'] }) {
                       <span className="text-[12px] font-medium text-[#3d6d9d] whitespace-nowrap">{step.badge}</span>
                     </div>
                   </div>
-                  <p className="text-[19px] font-medium leading-[25px] text-[#1a3b5d]">{step.title}</p>
+                  <p className="text-[18px] font-medium leading-[24px] text-[#1a3b5d]">{step.title}</p>
                   {isVideo && (
                     <div className="relative w-full h-[400px] rounded-xl overflow-hidden mt-1">
                       <Image src="/images/video-call-new.png" alt="Видеозвонок с врачом" fill className="object-cover object-center" />
@@ -67,7 +67,7 @@ export function AfterRequest({ dict }: { dict: Dictionary['afterRequest'] }) {
 
                   {/* Текст */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-[24px] font-medium leading-tight text-[#1a3b5d]">{step.title}</p>
+                    <p className="text-[18px] font-medium leading-tight text-[#1a3b5d]">{step.title}</p>
                   </div>
 
                   {/* Правая часть */}

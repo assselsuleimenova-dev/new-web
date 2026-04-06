@@ -1,6 +1,21 @@
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ParallaxHeroImage } from "@/components/motion/parallax-image";
 import type { Dictionary } from "@/dictionaries";
+
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0 },
+  transition: { type: "spring" as const, stiffness: 220, damping: 26, delay },
+});
+
+const fadeIn = (delay: number) => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.6, ease: "easeOut", delay },
+});
 
 export function HeroSection({ dict }: { dict: Dictionary['hero'] }) {
   return (
@@ -37,59 +52,82 @@ export function HeroSection({ dict }: { dict: Dictionary['hero'] }) {
 
       {/* Мобильный лейаут */}
       <div className="relative mx-auto max-w-6xl px-4 md:hidden">
-        <div className="flex flex-col items-center pt-16 pb-0">
-          <div className="flex flex-col items-center gap-2 pt-12 text-center">
-            <h1 className="text-[40px] font-medium leading-[38px] tracking-[-1.5px] text-[#1a3b5d] max-w-[345px]">
+        <div className="flex flex-col items-center pt-8 pb-0">
+          <div className="flex flex-col items-center gap-2 pt-6 text-center">
+            <motion.h1
+              {...fadeUp(0.05)}
+              className="text-[38px] font-medium leading-[36px] tracking-[-1.5px] text-[#1a3b5d] max-w-[345px]"
+            >
               {dict.title1}
               <br />
               {dict.title2}
-            </h1>
-            <p className="mt-1 text-lg leading-6 text-[#5d87a8] max-w-[320px]">
+            </motion.h1>
+            <motion.p {...fadeUp(0.18)} className="mt-1 text-lg leading-6 text-[#5d87a8] max-w-[320px]">
               {dict.subtitle} {dict.subtitle2}
-            </p>
-            <a href="#cta">
-              <Button className="mt-3 h-[65px] w-[201px] rounded-xl bg-[#3d6d9d] text-[17px] font-medium text-white hover:bg-[#345e87]">
-                {dict.cta}
-              </Button>
-            </a>
-            <p className="text-lg font-medium text-[#3d6d9d]">{dict.price}</p>
+            </motion.p>
+            <motion.div {...fadeUp(0.28)} className="flex flex-col items-center gap-2">
+              <a href="#cta">
+                <Button className="mt-3 h-[65px] w-[201px] rounded-xl bg-[#3d6d9d] text-[17px] font-medium text-white hover:bg-[#345e87]">
+                  {dict.cta}
+                </Button>
+              </a>
+              <p className="text-lg font-medium text-[#3d6d9d]">{dict.price}</p>
+            </motion.div>
           </div>
 
-          <div className="relative mt-6 h-[270px] w-full overflow-hidden">
-            <ParallaxHeroImage
-              src="https://www.figma.com/api/mcp/asset/4a7e672a-ebf1-4926-8eed-0139c89aef39"
-              alt="Врач на выезде"
-              priority
-            />
-          </div>
+          <motion.div {...fadeIn(0.35)} className="relative mt-6 h-[270px] w-screen -mx-4 overflow-hidden">
+            <div className="absolute inset-0">
+              <Image
+                src="https://www.figma.com/api/mcp/asset/4a7e672a-ebf1-4926-8eed-0139c89aef39"
+                alt="Врач на выезде"
+                fill
+                priority
+                className="object-cover object-top"
+                unoptimized
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Десктопный лейаут */}
       <div className="hidden md:block relative h-[620px]">
-        {/* Фото — правый край секции */}
-        <div className="absolute bottom-0 right-0 h-[520px] w-[50%] overflow-hidden">
-          <ParallaxHeroImage
-            src="https://www.figma.com/api/mcp/asset/4a7e672a-ebf1-4926-8eed-0139c89aef39"
-            alt="Врач на выезде"
-            priority
-          />
-        </div>
+        {/* Фото — появляется справа */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          className="absolute bottom-0 right-0 h-[520px] w-[50%] overflow-hidden"
+        >
+          <div className="absolute inset-0">
+            <Image
+              src="https://www.figma.com/api/mcp/asset/4a7e672a-ebf1-4926-8eed-0139c89aef39"
+              alt="Врач на выезде"
+              fill
+              priority
+              className="object-cover object-top"
+              unoptimized
+            />
+          </div>
+        </motion.div>
 
         {/* Текст — левая половина */}
         <div className="relative mx-auto max-w-6xl px-6 h-full">
-          <div className="absolute top-1/2 -translate-y-1/2 left-6 flex flex-col gap-4 max-w-[520px] pt-16">
-            <h1 className="text-[60px] font-medium leading-[56px] tracking-[-2px] text-[#1a3b5d]">
+          <div className="absolute top-1/2 -translate-y-1/2 left-6 flex flex-col gap-4 max-w-[520px]">
+            <motion.h1
+              {...fadeUp(0.05)}
+              className="text-[56px] font-medium leading-[52px] tracking-[-2px] text-[#1a3b5d]"
+            >
               {dict.title1}
               <br />
               {dict.title2}
-            </h1>
-            <p className="text-[22px] leading-[32px] text-[#5d87a8] max-w-[460px]">
+            </motion.h1>
+            <motion.p {...fadeUp(0.18)} className="text-[18px] leading-[28px] text-[#5d87a8] max-w-[460px]">
               {dict.subtitle}
               <br />
               {dict.subtitle2}
-            </p>
-            <div className="flex items-center gap-6 mt-2">
+            </motion.p>
+            <motion.div {...fadeUp(0.3)} className="flex items-center gap-6 mt-2">
               <a href="#cta">
                 <Button className="h-[80px] w-[260px] rounded-[16px] bg-[#3d6d9d] text-[20px] font-medium text-white hover:bg-[#345e87] shrink-0">
                   {dict.cta}
@@ -98,7 +136,7 @@ export function HeroSection({ dict }: { dict: Dictionary['hero'] }) {
               <p className="text-[22px] text-[#3d6d9d] whitespace-nowrap">
                 {dict.price}
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

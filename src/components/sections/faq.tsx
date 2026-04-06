@@ -21,7 +21,7 @@ function FaqItemComponent({ faq }: { faq: FaqItem }) {
         </span>
       </button>
       {open && (
-        <p className="pb-6 text-base leading-7 text-[#5d87a8]">{faq.a}</p>
+        <p className="pb-6 text-[15px] leading-7 text-[#5d87a8]">{faq.a}</p>
       )}
     </div>
   );

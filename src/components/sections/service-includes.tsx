@@ -29,7 +29,7 @@ export function ServiceIncludes({ dict }: { dict: Dictionary['serviceIncludes'] 
             {dict.title1}
             <br />{dict.title2}
           </h2>
-          <p className="text-[16px] text-[#5d87a8] mb-10 md:mb-14 text-center md:text-center">{dict.subtitle}</p>
+          <p className="text-[15px] text-[#5d87a8] mb-10 md:mb-14 text-center md:text-center">{dict.subtitle}</p>
         </FadeUp>
 
         <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 relative">
@@ -39,14 +39,14 @@ export function ServiceIncludes({ dict }: { dict: Dictionary['serviceIncludes'] 
             <div className="flex gap-6 mt-auto">
               <div className="flex flex-col gap-1">
                 {dict.specialties1.map((s) => (
-                  <span key={s} className="text-sm leading-5 text-[#5384c4]">
+                  <span key={s} className="text-[15px] leading-5 text-[#5384c4]">
                     {s}
                   </span>
                 ))}
               </div>
               <div className="flex flex-col gap-1">
                 {dict.specialties2.map((s) => (
-                  <span key={s} className="text-sm leading-5 text-[#5384c4]">
+                  <span key={s} className="text-[15px] leading-5 text-[#5384c4]">
                     {s}
                   </span>
                 ))}
@@ -60,14 +60,14 @@ export function ServiceIncludes({ dict }: { dict: Dictionary['serviceIncludes'] 
               <MultilineText text={dict.bagTitle} className="text-lg font-medium text-[#1a3b5d] leading-tight" />
               <div className="flex flex-col gap-1.5 mt-4">
                 {dict.bagItems.map((item) => (
-                  <span key={item} className="text-sm leading-5 text-[#5384c4]">
+                  <span key={item} className="text-[15px] leading-5 text-[#5384c4]">
                     {item}
                   </span>
                 ))}
               </div>
             </div>
             {/* Сумка — вылезает за карточку и накладывается на баннер */}
-            <div className="absolute bottom-[-230px] right-[-60px] w-[300px] h-[300px] md:bottom-[-140px] md:right-[-30px] md:w-[380px] md:h-[380px] rotate-[-7deg] z-10 pointer-events-none">
+            <div className="absolute top-[-110px] right-[-120px] w-[300px] h-[300px] md:bottom-[-140px] md:top-auto md:right-[-30px] md:w-[380px] md:h-[380px] rotate-[-30deg] md:rotate-[-7deg] z-10 pointer-events-none">
               <Image
                 src={bagImage}
                 alt="Сумка фельдшера"
@@ -89,7 +89,7 @@ export function ServiceIncludes({ dict }: { dict: Dictionary['serviceIncludes'] 
               className="rounded-2xl px-6 py-5 md:px-10 md:py-7 flex flex-col"
               style={{
                 backgroundImage:
-                  "linear-gradient(98.54deg, rgb(143,215,212) 7.37%, rgb(78,137,188) 22.54%)",
+                  "linear-gradient(135deg, #1a3b5d 0%, #2d5f8f 50%, #3d6d9d 100%)",
               }}
             >
               <p className="text-[32px] md:text-[40px] font-bold leading-tight tracking-[-2px] text-white">

@@ -29,7 +29,7 @@ export function Reviews({ dict }: { dict: Dictionary['reviews'] }) {
           <h2 className="text-[34px] leading-[31px] md:text-[44px] md:leading-[1.1] font-semibold tracking-[-1px] text-[#1a3b5d] mb-10 md:mb-14 text-center md:text-center">
             {dict.title}
           </h2>
-          {dict.subtitle && <p className="text-[16px] text-[#5d87a8] mb-10 md:mb-14 text-center md:text-center">{dict.subtitle}</p>}
+          {dict.subtitle && <p className="text-[15px] text-[#5d87a8] mb-10 md:mb-14 text-center md:text-center">{dict.subtitle}</p>}
         </FadeUp>
 
         {/* Мобилка */}

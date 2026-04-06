@@ -46,14 +46,14 @@ src/
     motion/
       fade-up.tsx         ← FadeUp({ children, delay?, className? })
       stagger-grid.tsx    ← StaggerGrid + StaggerItem wrappers
-      parallax-image.tsx  ← ParallaxHeroImage for hero photo
+      parallax-image.tsx  ← ParallaxHeroImage (not used in hero — parallax removed)
     sections/            ← One file per page section
     ui/                  ← shadcn primitives (Button, Card, etc.)
   dictionaries/
     ru.ts            ← Russian content (source of Dictionary type)
     kk.ts            ← Kazakh content
     index.ts         ← getDictionary(lang) + type exports
-  middleware.ts      ← Locale redirect (/ → /ru)
+  proxy.ts           ← Locale redirect (/ → /ru) — Next.js 16 uses proxy.ts, NOT middleware.ts
 ```
 
 ## Bilingual Content
@@ -82,13 +82,29 @@ Use **only** the existing wrappers — do not use `motion.*` directly in section
 <ParallaxHeroImage src="..." alt="..." priority />
 ```
 
+## Typography Scale
+
+4 levels — do not introduce new sizes without asking:
+
+| Level | Mobile | Desktop | Usage |
+|---|---|---|---|
+| Display | `38px / leading-[36px]` | `56px / leading-[52px]` | Hero h1 |
+| Heading | `34px / leading-[31px]` | `44px / leading-[1.1]` | Section h2 |
+| Large | `18px` | `18px` | Card titles, subtitles, hero subtitle |
+| Body | `15px` | `15px` | Body text, list items, meta |
+
+- All headings: `font-semibold tracking-[-1px] text-[#1a3b5d]`
+- Hero h1: `font-medium tracking-[-1.5px]` mobile / `tracking-[-2px]` desktop
+- Subtitles: `text-[#5d87a8]`
+- Decorative price: `font-bold` / `font-black` — exception to scale, keep as-is
+
 ## Section Layout Patterns
 
 - Max width: `max-w-6xl mx-auto px-6`
 - Section padding: `py-16 md:py-24`
-- Alternating backgrounds: `bg-white` / `bg-[#f7fbff]`
+- All section backgrounds: `bg-[#f7fbff]` (unified — no alternating)
 - Headings: `text-[34px] leading-[31px] md:text-[44px] md:leading-[1.1] font-semibold tracking-[-1px] text-[#1a3b5d]`
-- Subtitles: `text-[16px] text-[#5d87a8]`
+- Subtitles: `text-[15px] text-[#5d87a8]`
 - Mobile: centered text; Desktop: varies per section (center or left)
 
 ## Asset Handling

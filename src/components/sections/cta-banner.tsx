@@ -35,7 +35,7 @@ export function CtaBanner({ dict }: { dict: Dictionary['cta'] }) {
                 href="https://api.whatsapp.com/send/?phone=77760320388&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21+%D0%A5%D0%BE%D1%87%D1%83+%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C+%D0%B2%D1%8B%D0%B5%D0%B7%D0%B4+%D0%B2%D1%80%D0%B0%D1%87%D0%B0&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 h-[60px] px-10 rounded-xl bg-[#3eb87d] text-white text-[17px] font-medium hover:bg-[#35a56e] transition-colors"
+                className="inline-flex items-center justify-center gap-2 h-[60px] px-10 rounded-xl bg-[#3eb87d] text-white text-[17px] font-medium hover:bg-[#35a56e] transition-colors whitespace-pre-line text-center leading-tight"
               >
                 {/* WhatsApp иконка */}
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
