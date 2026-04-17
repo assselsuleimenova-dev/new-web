@@ -80,6 +80,45 @@ export const ru = {
       { name: "Айгерим", meta: "39 лет", text: "Заказала маме, ей 72 и тяжело ехать каждый раз в клинику. Очень приятные врачи и удобный сервис." },
     ],
   },
+  droneSafety: {
+    title: "Безопасность при доставке дроном",
+    subtitle: "Соблюдайте эти правила при получении заказа",
+    languages: [
+      {
+        code: "KZ",
+        label: "Қазақша",
+        items: [
+          "Дрон қонбайды, тапсырыс троспен түсіріледі",
+          "Тросқа тимеңіз",
+          "Астында тұрмаңыз, қашықтық сақтаңыз",
+          "Тапсырысты дрон кеткен соң алыңыз",
+          "Ауа райына байланысты жеткізу тоқтауы мүмкін",
+        ],
+      },
+      {
+        code: "RU",
+        label: "Русский",
+        items: [
+          "Дрон не садится, заказ спускается на тросе",
+          "Не трогайте трос",
+          "Не стойте под дроном, держитесь на расстоянии",
+          "Забирайте заказ после отлета дрона",
+          "Из-за погоды доставка может отмениться",
+        ],
+      },
+      {
+        code: "EN",
+        label: "English",
+        items: [
+          "The drone does not land, your order is lowered by cable",
+          "Do not touch the cable",
+          "Do not stand under the drone, keep your distance",
+          "Collect your order after the drone leaves",
+          "Delivery may be unavailable in bad weather",
+        ],
+      },
+    ],
+  },
 };
 
 export type Dictionary = typeof ru;
