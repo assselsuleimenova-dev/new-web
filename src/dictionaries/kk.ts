@@ -82,4 +82,43 @@ export const kk: Dictionary = {
       { name: "Айгерим", meta: "39 жас", text: "Шешеме тапсырдым, ол 72 жаста, клиникаға барып-келу өте ауыр. Өте жағымды дәрігерлер және ыңғайлы қызмет." },
     ],
   },
+  droneSafety: {
+    title: "Дронмен жеткізу кезіндегі қауіпсіздік",
+    subtitle: "Тапсырысты алу кезінде осы ережелерді сақтаңыз",
+    languages: [
+      {
+        code: "KZ",
+        label: "Қазақша",
+        items: [
+          "Дрон қонбайды, тапсырыс троспен түсіріледі",
+          "Тросқа тимеңіз",
+          "Астында тұрмаңыз, қашықтық сақтаңыз",
+          "Тапсырысты дрон кеткен соң алыңыз",
+          "Ауа райына байланысты жеткізу тоқтауы мүмкін",
+        ],
+      },
+      {
+        code: "RU",
+        label: "Русский",
+        items: [
+          "Дрон не садится, заказ спускается на тросе",
+          "Не трогайте трос",
+          "Не стойте под дроном, держитесь на расстоянии",
+          "Забирайте заказ после отлета дрона",
+          "Из-за погоды доставка может отмениться",
+        ],
+      },
+      {
+        code: "EN",
+        label: "English",
+        items: [
+          "The drone does not land, your order is lowered by cable",
+          "Do not touch the cable",
+          "Do not stand under the drone, keep your distance",
+          "Collect your order after the drone leaves",
+          "Delivery may be unavailable in bad weather",
+        ],
+      },
+    ],
+  },
 };
